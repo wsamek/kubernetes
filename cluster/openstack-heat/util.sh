@@ -109,11 +109,11 @@ function upload-resources() {
   swift post kubernetes --read-acl '.r:*,.rlistings'
 
   echo "[INFO] Upload ${KUBERNETES_RELEASE_TAR}"
-  swift upload kubernetes ${ROOT}/../../_output/release-tars/${KUBERNETES_RELEASE_TAR} \
+  swift upload kubernetes ${ROOT}/../../_release/kubernetes/server/${KUBERNETES_RELEASE_TAR} \
     --object-name kubernetes-server.tar.gz
 
   echo "[INFO] Upload kubernetes-salt.tar.gz"
-  swift upload kubernetes ${ROOT}/../../_output/release-tars/kubernetes-salt.tar.gz \
+  swift upload kubernetes ${ROOT}/../../_release/kubernetes/server/kubernetes-salt.tar.gz \
     --object-name kubernetes-salt.tar.gz
 }
 
