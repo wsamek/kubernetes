@@ -106,6 +106,9 @@ function create-stack() {
 #   ROOT
 #   KUBERNETES_RELEASE_TAR
 function upload-resources() {
+  # already uploaded
+  return
+	
   swift post kubernetes --read-acl '.r:*,.rlistings'
 
   echo "[INFO] Upload ${KUBERNETES_RELEASE_TAR}"
@@ -139,6 +142,8 @@ function add-keypair() {
 #   IMAGE_PATH
 #   OPENSTACK_IMAGE_NAME
 function create-glance-image() {
+  openstack image show ${OPENSTACK_IMAGE_NAME} 
+  openstack image show CentOS7 
   if [[ ${CREATE_IMAGE} == "true" ]]; then
     local image_status=$(openstack image show ${OPENSTACK_IMAGE_NAME} | awk '$2=="id" {print $4}')
 
